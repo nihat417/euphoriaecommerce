@@ -1,18 +1,22 @@
-'use client'
-import React,{useState} from 'react'
-import Image from 'next/image'
+'use client';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import logo from '../../../assets/images/Logo.svg'
-import searchLogo from '../../../assets/images/search (1).svg'
+import logo from '../../../assets/images/Logo.svg';
+import searchLogo from '../../../assets/images/search (1).svg';
+import component1 from '../../../assets/images/Component 1.svg';
+import component2 from '../../../assets/images/Component 2.svg';
+import component3 from '../../../assets/images/Component 3.svg';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+    const [auth, setAuth] = useState(true);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-      };
+    };
 
     const navItems = [
         { href: "/", label: "Shop" },
@@ -20,52 +24,106 @@ const Navbar = () => {
         { href: "/common/women", label: "Women" },
         { href: "/common/combos", label: "Combos" },
         { href: "/common/joggers", label: "Joggers" }
-      ];
+    ];
 
-  return (
-    <nav className='w-full fixed top-0 duration-300'>
-        <div className="flex flex-wrap justify-center items-center md:mx-[40px] my-[20px]">    
-            <Image src={logo} alt="Picture of the author" className='mx-[40px]'/>
-            <button type="button" className="inline-flex items-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-search" 
-                aria-expanded={isOpen} onClick={toggleMenu}>
-                <span className="sr-only">Open main menu</span>
-                <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-            <div className={`items-center justify-between ${isOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:order-1`} id="navbar-search">
-                <ul className="flex flex-col p-4 md: mt-4 font-medium border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
+    return (
+        <nav className='w-full fixed top-0 duration-300 z-50 bg-white'>
+            <div className='flex flex-wrap justify-between items-center mx-[10px] md:mx-[40px] my-[20px]'>
+                <Image src={logo} alt="Logo" />
+
+                <div className='hidden lg:flex space-x-4'>
                     {navItems.map((item) => (
-                    <li key={item.href} className="relative group">
-                    <Link href={item.href} passHref
-                      className={`block py-2 pl-3 pr-4 rounded md:p-0 ${pathname === item.href ? 'text-[#3C4242]' : 'text-[#807D7E]  hover:[#807D7E]'} transition-all duration-300`}
-                      style={{ fontSize: '0.8rem' }}>
-                      <span className="text-sm md:text-base lg:text-lg xl:text-xl">{item.label}</span>
-                    </Link>
-                  </li>))}
-                </ul>
+                        <Link 
+                            key={item.href} 
+                            href={item.href} 
+                            className={`py-2 text-gray-800 hover:text-gray-600 ${pathname === item.href ? 'font-semibold' : ''}`}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+
+                {auth ?
+                    <div className={`fixed top-0 right-0 z-10 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
+                        <div className="flex flex-col p-4 h-full">
+                            <button className="self-end mb-4 text-gray-500 hover:text-gray-700" onClick={toggleMenu}>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <ul className="flex flex-col space-y-4">
+                                {navItems.map((item) => (
+                                    <li key={item.href}>
+                                        <Link 
+                                            href={item.href} 
+                                            className={`block py-2 text-gray-800 hover:text-gray-600 ${pathname === item.href ? 'font-semibold' : ''}`}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                    :''
+                }
+
+                <div className='relative flex items-center bg-[#000] mx-[10px] rounded-lg order-3 md:w-auto'>
+                    <Image src={searchLogo} alt="Search Icon" className="absolute left-2 w-5 h-5" />
+                    <input 
+                        type="text" 
+                        placeholder="Search" 
+                        className="pl-10 py-2 w-full bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none"
+                    />
+                </div>
+
+                {auth ? 
+                    <div className='order-3 flex space-x-4'>
+                        <button className='mx-[10px]'>
+                            <Image src={component1} alt='Component 1'/>
+                        </button>
+                        <button className='mx-[10px]'>
+                            <Image src={component2} alt='Component 2'/>
+                        </button>
+                        <button className='mx-[10px]'>
+                            <Image src={component3} alt='Component 3'/>
+                        </button>
+                    </div>
+                 : 
+                    <div className='order-2 flex space-x-4'>
+                        <button className='mx-[20px] bg-[#8A33FD] px-[40px] py-[10px] rounded-[10px]'>
+                            Login
+                        </button>
+                        <button className='mx-[20px] bg-[#fff] border-[1px] border-black px-[40px] py-[10px] rounded-[10px]'>
+                            Sign Up
+                        </button>
+                    </div>
+                }
+
+                {auth ?
+                    <button 
+                        type="button" 
+                        className="inline-flex order-4 lg:hidden items-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" 
+                        aria-controls="navbar-search" 
+                        aria-expanded={isOpen} 
+                        onClick={toggleMenu}>
+                        <span className="sr-only">Open main menu</span>
+                        <svg 
+                            className="w-6 h-6" 
+                            aria-hidden="true" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24" 
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                    :''
+                }
             </div>
-
-            <div className='relative flex items-center bg-[#000] mx-[20px] rounded-lg  md:w-auto md:order-2'>
-                <Image src={searchLogo} alt="Search Icon" className="absolute left-2 w-5 h-5" />
-                <input 
-                  type="text" 
-                  placeholder="Search" 
-                  className="pl-10 py-2 w-full bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none"
-                />
-            </div>
-
-            <button className='mx-[20px] bg-[#8A33FD] px-[40px] py-[10px] rounded-[10px] order-3'>
-                Login
-            </button>
-
-            <button className='mx-[20px] bg-[#fff] border-[1px] border-black px-[40px] py-[10px] rounded-[10px] order-3'>
-                Sign Up
-            </button>
-
-        </div>
-    </nav>
-  )
-}
+        </nav>
+    );
+};
 
 export default Navbar;
