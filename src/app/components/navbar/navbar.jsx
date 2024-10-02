@@ -43,7 +43,7 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                {auth ?
+                {auth ? (
                     <div className={`fixed top-0 right-0 z-10 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
                         <div className="flex flex-col p-4 h-full">
                             <button className="self-end mb-4 text-gray-500 hover:text-gray-700" onClick={toggleMenu}>
@@ -65,10 +65,9 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-                    :''
-                }
+                ) : ''}
 
-                <div className='relative flex items-center bg-[#000] mx-[10px] rounded-lg order-3 md:w-auto'>
+                <div className={`relative flex items-center bg-[#000] mx-[10px] rounded-lg order-3 md:w-auto w-full ${isOpen ? 'order-2' : 'order-3'} lg:w-auto`}>
                     <Image src={searchLogo} alt="Search Icon" className="absolute left-2 w-5 h-5" />
                     <input 
                         type="text" 
@@ -77,7 +76,7 @@ const Navbar = () => {
                     />
                 </div>
 
-                {auth ? 
+                {auth ? (
                     <div className='order-3 flex space-x-4'>
                         <button className='mx-[10px]'>
                             <Image src={component1} alt='Component 1'/>
@@ -89,7 +88,7 @@ const Navbar = () => {
                             <Image src={component3} alt='Component 3'/>
                         </button>
                     </div>
-                 : 
+                ) : (
                     <div className='order-2 flex space-x-4'>
                         <button className='mx-[20px] bg-[#8A33FD] px-[40px] py-[10px] rounded-[10px]'>
                             Login
@@ -98,12 +97,12 @@ const Navbar = () => {
                             Sign Up
                         </button>
                     </div>
-                }
+                )}
 
-                {auth ?
+                {auth ? (
                     <button 
                         type="button" 
-                        className="inline-flex order-4 lg:hidden items-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" 
+                        className="inline-flex order-2 md:order-4 lg:hidden items-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" 
                         aria-controls="navbar-search" 
                         aria-expanded={isOpen} 
                         onClick={toggleMenu}>
@@ -119,8 +118,7 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
-                    :''
-                }
+                ) : ''}
             </div>
         </nav>
     );
