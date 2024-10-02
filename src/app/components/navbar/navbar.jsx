@@ -31,17 +31,19 @@ const Navbar = () => {
             <div className='flex flex-wrap justify-between items-center mx-[10px] md:mx-[40px] my-[20px]'>
                 <Image src={logo} alt="Logo" />
 
-                <div className='hidden lg:flex space-x-4'>
-                    {navItems.map((item) => (
-                        <Link 
-                            key={item.href} 
-                            href={item.href} 
-                            className={`py-2 text-gray-800 hover:text-gray-600 ${pathname === item.href ? 'font-semibold' : ''}`}
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
-                </div>
+                {auth ? (
+                    <div className='hidden lg:flex space-x-4'>
+                        {navItems.map((item) => (
+                            <Link 
+                                key={item.href} 
+                                href={item.href} 
+                                className={`py-2 text-gray-800 hover:text-gray-600 ${pathname === item.href ? 'font-semibold' : ''}`}
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </div>
+                ) : ''}
 
                 {auth ? (
                     <div className={`fixed top-0 right-0 z-10 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
@@ -89,17 +91,17 @@ const Navbar = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className='order-2 flex space-x-4'>
-                        <button className='mx-[20px] bg-[#8A33FD] px-[40px] py-[10px] rounded-[10px]'>
+                    <div className='order-2 md:order-3 my-[10px] flex  md:flex-row space-x-0 md:space-x-4'>
+                        <button className='mx-[10px] md:mx-[20px] bg-[#8A33FD] px-[20px] md:px-[40px] py-[8px] md:py-[10px] rounded-[10px] text-sm md:text-base'>
                             Login
                         </button>
-                        <button className='mx-[20px] bg-[#fff] border-[1px] border-black px-[40px] py-[10px] rounded-[10px]'>
+                        <button className='mx-[10px] md:mx-[20px] bg-[#fff] border-[1px] border-black px-[20px] md:px-[40px] py-[8px] md:py-[10px] rounded-[10px] text-sm md:text-base'>
                             Sign Up
                         </button>
                     </div>
                 )}
 
-                {auth ? (
+                {auth && !isOpen ? (  
                     <button 
                         type="button" 
                         className="inline-flex order-2 md:order-4 lg:hidden items-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" 
@@ -118,7 +120,7 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
-                ) : ''}
+                ) : ''} 
             </div>
         </nav>
     );
