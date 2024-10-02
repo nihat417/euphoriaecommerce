@@ -12,7 +12,7 @@ import component3 from '../../../assets/images/Component 3.svg';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
-    const [auth, setAuth] = useState(true);
+    const [auth, setAuth] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -27,7 +27,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className='w-full fixed top-0 duration-300 z-50 bg-white'>
+        <nav className='w-full duration-300 z-50 bg-white border-b-[1px]'>
             <div className='flex flex-wrap justify-between items-center mx-[10px] md:mx-[40px] my-[20px]'>
                 <Image src={logo} alt="Logo" />
 
@@ -69,7 +69,7 @@ const Navbar = () => {
                     </div>
                 ) : ''}
 
-                <div className={`relative flex items-center bg-[#000] mx-[10px] rounded-lg order-3 md:w-auto w-full ${isOpen ? 'order-2' : 'order-3'} lg:w-auto`}>
+                <div className={`relative flex items-center bg-[#F6F6F6] mx-[10px] rounded-lg order-3 md:w-auto w-full ${isOpen ? 'order-2' : 'order-3'} lg:w-auto`}>
                     <Image src={searchLogo} alt="Search Icon" className="absolute left-2 w-5 h-5" />
                     <input 
                         type="text" 
