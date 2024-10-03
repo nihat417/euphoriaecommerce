@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import Login from "./common/Login/page";
+import Register from "./common/Register/page";
 
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
 
   return (
   <div>
-    {auth ? <Login/> :  <Login/> }
+    {auth ? <Register/> :  <Register/> }
   </div>
   );
 }

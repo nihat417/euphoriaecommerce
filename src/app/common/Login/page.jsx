@@ -55,7 +55,7 @@ const Login = () => {
 
             <span className='text-[15px]'>
               Don't have an account?
-              <Link href="/Register" className='underline'>Sign up</Link>
+              <Link href="/common/Register" className='underline'>Sign up</Link>
             </span>
 
         </div>
