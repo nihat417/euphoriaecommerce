@@ -15,8 +15,10 @@ const CheckMail = () => {
             <h2 className=' text-[#333] ml-[20px] md:ml-[50px] my-[30px] md:my-[50px] text-[30px] md:text-[40px] font-bold'>Reset Your Password</h2>
 
             <div className='flex flex-col md:mx-[50px]'>
-                <p className='text-[#666666]'>Please check your email inbox and click on the provided link to reset your password . If you don’t receive email, Click here to resend</p>
-                <button className='bg-purple-600 mb-2 p-2 rounded-[5px] text-white md:w-1/3'>Send</button>
+                <p className='text-[#666666] mb-[20px]'>Please check your email inbox and click on the provided link to reset your password . If you don’t receive email , 
+                  <Link href='/common/Verification' className='text-[#8A33FD]'>Click here to resend</Link>
+                </p>
+                
 
                 <span className='text-[15px]'>
                     Back to

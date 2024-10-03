@@ -8,10 +8,7 @@ import { useRouter } from 'next/navigation';
 const ResetPassword = () => {
     const router = useRouter();
 
-    const handleSubmit = () =>{
-        
-        router.push('/common/CheckMail')
-    }
+    const handleSubmit = () =>{router.push('/common/CheckMail')}
   return (
     <div className="flex flex-col md:flex-row h-screen">
         <div className="w-full md:w-1/2 order-2">

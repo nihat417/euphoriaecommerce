@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import logo from '../../../assets/images/Logo.svg';
 import searchLogo from '../../../assets/images/search (1).svg';
@@ -13,10 +14,15 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
     const [auth, setAuth] = useState(false);
+    const router = useRouter();
+
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+
+    const handleSubmit = () =>{router.push('/common/Login')}
 
     const navItems = [
         { href: "/", label: "Shop" },
@@ -28,8 +34,11 @@ const Navbar = () => {
 
     return (
         <nav className='w-full duration-300 z-50 bg-white border-b-[1px]'>
-            <div className='flex flex-wrap justify-between items-center mx-[10px] md:mx-[40px] my-[20px]'>
-                <Image src={logo} alt="Logo" />
+            <div className='flex flex-wrap justify-between items-center mx-[10px] md:mx-[40px] my-[10px]'>
+                <button onClick={handleSubmit}>
+                    <Image src={logo} alt="Logo" />
+
+                </button>
 
                 {auth ? (
                     <div className='hidden lg:flex space-x-4'>
