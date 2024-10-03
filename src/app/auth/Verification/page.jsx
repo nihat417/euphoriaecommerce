@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 const Verification = () => {
     const router = useRouter();
 
-    const handleSubmit = () =>{router.push('/common/NewPassword')};
+    const handleSubmit = () =>{router.push('/auth/NewPassword')};
 
   return (
     <div className="flex flex-col md:flex-row h-screen">

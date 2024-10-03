@@ -10,7 +10,7 @@ import googleplaysvg from '../../../assets/images/googleplay.png';
 
 const Footer = () => {
   return (
-    <footer className='bg-[#3C4242] py-[150px] md:p-10'>
+    <footer className='w-full bg-[#3C4242] py-[150px] md:p-10'>
         <div className='flex flex-wrap p-10 justify-around '>
             <div className='lg:my-0 lg:mt-0 md:mt-0 xs:my-[20px] xs:mt-20'>
                 <h2 className='text-white font-bold text-[28px]'>Need Help</h2>

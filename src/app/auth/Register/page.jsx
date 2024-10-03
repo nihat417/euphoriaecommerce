@@ -63,7 +63,7 @@ return (
 
                 <span className='text-[15px]'>
                     Already have an account?
-                    <Link href="/common/Login" className='underline'>Log in</Link>
+                    <Link href="/auth/Login" className='underline'>Log in</Link>
                 </span>
 
             </div>

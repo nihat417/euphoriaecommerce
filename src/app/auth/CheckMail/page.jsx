@@ -22,7 +22,7 @@ const CheckMail = () => {
 
                 <span className='text-[15px]'>
                     Back to
-                    <Link href="/common/Login" className='underline'> Login</Link>
+                    <Link href="/auth/Login" className='underline'> Login</Link>
                 </span>
 
             </div>

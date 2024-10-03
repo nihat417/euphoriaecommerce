@@ -46,7 +46,7 @@ const Login = () => {
             </div>
             <div className='flex flex-row justify-between'>
               <div></div>
-              <Link href="/common/ResetPassword">
+              <Link href="/auth/ResetPassword">
                 <span className='underline'>Forget your password</span>
               </Link>
             </div>
@@ -55,7 +55,7 @@ const Login = () => {
 
             <span className='text-[15px]'>
               Don't have an account?
-              <Link href="/common/Register" className='underline'>Sign up</Link>
+              <Link href="/auth/Register" className='underline'>Sign up</Link>
             </span>
 
         </div>
