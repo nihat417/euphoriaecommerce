@@ -4,6 +4,8 @@ import Image from 'next/image';
 import lgPhoto from '../../../assets/images/logph.png';
 import google from '../../../assets/images/Google.svg';
 import twitter from '../../../assets/images/twitter.svg';
+import hideic from '../../../assets/images/Hide view.svg'
+import Link from 'next/link';
 
 const Login = () => {
   return (
@@ -22,10 +24,40 @@ const Login = () => {
             </button>
 
 
-            <button type="button" className="items-center justify-center  bg-white hover:bg-gray-100 border border-[#000] focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex  dark:text-black me-2 mb-2">
+            <button type="button" className="items-center justify-center mb-6 bg-white hover:bg-gray-100 border border-[#000] focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex  dark:text-black me-2 ">
                 <Image src={twitter} alt='Twitter' className='mr-[10px]' />
                 Continue with Twitter
             </button>
+
+            <div className="mb-4">
+              <label htmlFor="large-input" className="block mb-2 text-sm font-medium text-[#3C4242]">User name or email address</label>
+              <input type="text" id="default-input" className="border text-sm rounded-lg block w-full p-2.5 border-black"/>
+            </div>
+
+            <div className="mb-3">
+              <div className='flex flex-row justify-between'>
+                <label htmlFor="large-input" className="block mb-2 text-sm font-medium text-[#3C4242]">Password</label>
+                <div className='flex flex-row'> 
+                  <Image src={hideic} alt='ss' className='mb-[5px]'/>
+                  <label htmlFor="large-input" className="block mb-2 text-sm font-medium text-[#3C4242]">Hide</label>
+                </div>
+              </div>
+              <input type="text" id="default-input" className=" border  text-sm rounded-lg  block w-full p-2.5 border-black"/>
+            </div>
+            <div className='flex flex-row justify-between'>
+              <div></div>
+              <Link href="/forgot-password">
+                <span className='underline'>Forget your password</span>
+              </Link>
+            </div>
+
+            <button className='bg-purple-600 mb-2 p-2 rounded-[5px] text-white md:w-1/3'>Sign In</button>
+
+            <span className='text-[15px]'>
+              Don't have an account?
+              <Link href="/Register" className='underline'>Sign up</Link>
+            </span>
+
         </div>
       </div>
     </div>
