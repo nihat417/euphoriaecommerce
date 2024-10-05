@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import carouselimage1 from '../../../assets/images/homecaros.jpg';
-import carouselimage2 from '../../../assets/images/checkmailphto.png'; // Добавь другие изображения
-import carouselimage3 from '../../../assets/images/createnewpswphoto.png';
+import carouselimage2 from '../../../assets/images/carsu2.webp';
 
-const images = [carouselimage1, carouselimage2, carouselimage3];
+
+const images = [carouselimage1, carouselimage2,];
 
 const HomePage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,17 +22,16 @@ const HomePage = () => {
   };
 
   return (
-    <div id="indicators-carousel" className="relative w-full" data-carousel="static">
-      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div id="indicators-carousel" className="relative w-full " data-carousel="static">
+      <div className="relative h-65  overflow-hidden rounded-lg ">
         {images.map((image, index) => (
           <div
             key={index}
             className={`duration-700 ease-in-out ${index === activeIndex ? 'block' : 'hidden'}`}
-            data-carousel-item={index === activeIndex ? 'active' : ''}
-          >
+            data-carousel-item={index === activeIndex ? 'active' : ''}>
             <Image
               src={image}
-              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="object-fill h-[500px] w-full"
               alt={`Slide ${index + 1}`}
             />
           </div>
